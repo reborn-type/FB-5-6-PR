@@ -37,7 +37,7 @@ const swaggerOptions = {
             },
         ],
     },
-    apis: ['/script.js'],
+    apis: ['./src/api/script.js'],
 }
 
 const swaggerSpec = swaggerJsdoc(swaggerOptions);
@@ -109,40 +109,40 @@ function findProductOr404(id, res){
 * @swagger
 * /api/products:
 *   post:
-*       summary: Создает новый товар
-*       tags: [Products]
-*       requestBody:
-*           required: true
-*           content:
-*               application/json:
-*                   schema:
-*                       type: object
-*                       required:
-*                           - name
-*                           - price          
-*                           - category
-*                           - description
-*                           - countInStock
-*                       properties:
-*                           name:
-*                               type: string
-*                           price:
-*                               type: integer
-*                           category:
-*                               type: string
-*                           description:
-*                               type: string
-*                           countInStock:
-*                               type: integer
-*          responses:
-*               201:
-*                   description: Товар успешно создан
-*                   content:
-*                       application/json:
-*                           schema:
-*                               $ref: '#/components/schemas/Product'
-*               400:
-*                   description: Ошибка в теле запроса
+*     summary: Создает новый товар
+*     tags: [Products]
+*     requestBody:
+*       required: true
+*       content:
+*         application/json:
+*           schema:
+*             type: object
+*             required:
+*               - name
+*               - price          
+*               - category
+*               - description
+*               - countInStock
+*             properties:
+*               name:
+*                 type: string
+*               price:
+*                 type: integer
+*               category:
+*                 type: string
+*               description:
+*                 type: string
+*               countInStock:
+*                 type: integer
+*     responses:
+*       201:
+*         description: Товар успешно создан
+*         content:
+*           application/json:
+*             schema:
+*               $ref: '#/components/schemas/Product'
+*       400:
+*         description: Ошибка в теле запроса
 */
 app.post("/api/products", (req, res) => {
     const {name, price, description, countInStock, category} = req.body;
@@ -166,7 +166,7 @@ app.post("/api/products", (req, res) => {
 * /api/products:
 *   get:
 *       summary: Возвращает список всех товаров
-*       tags: [Product]
+*       tags: [Products]
 *       responses:
 *           200:
 *               description: Список товаров
@@ -186,7 +186,7 @@ app.get("/api/products", (req,res) => {
 * /api/products/{id}:
 *   get:
 *       summary: Получает товара по ID
-*       tags: [Product]
+*       tags: [Products]
 *       parameters:
 *         - in: path
 *           name: id
